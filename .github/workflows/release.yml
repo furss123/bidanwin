@@ -1,0 +1,62 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'   # triggers on version tags like v0.1.0
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate icon
+        run: npm run generate-icon
+
+      - name: Build app
+        run: npm run build
+
+      - name: Package Windows installer
+        run: npm run package
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "BidanWin ${{ github.ref_name }}"
+          body: |
+            ## 비단윈 (BidanWin) ${{ github.ref_name }}
+            
+            Windows 기본 앱 원클릭 제거 도구
+            One-click Windows bloatware remover
+            
+            ### 설치 방법 / Installation
+            1. 아래 `BidanWin-Setup-*.exe` 다운로드
+            2. 실행 후 설치 (관리자 권한 필요)
+            3. 비단윈 실행
+            
+            ### ⚠️ 주의사항 / Warning
+            - 삭제된 앱은 복원이 어렵습니다. 반드시 복원 지점을 생성하세요.
+            - Removed apps are hard to restore. Always create a restore point first.
+            
+            ### © 2026 HyoT · MIT License
+          draft: false
+          prerelease: false
+          files: |
+            dist/*.exe
+            dist/*.exe.blockmap
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

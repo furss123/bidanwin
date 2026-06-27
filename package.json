@@ -1,0 +1,84 @@
+{
+  "name": "bidanwin",
+  "version": "0.1.0",
+  "description": "BidanWin (비단윈) — remove unwanted Windows default apps",
+  "main": "./out/main/index.js",
+  "author": "HyoT",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyot/bidanwin.git"
+  },
+  "homepage": "https://github.com/hyot/bidanwin",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "package": "electron-vite build && electron-builder --win",
+    "generate-icon": "node scripts/generate-icon.mjs",
+    "build:all": "npm run generate-icon && npm run build && npm run package"
+  },
+  "dependencies": {
+    "lucide-react": "^1.21.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "autoprefixer": "^10.4.21",
+    "electron": "^35.7.5",
+    "electron-builder": "^26.0.12",
+    "electron-vite": "^3.1.0",
+    "png-to-ico": "^2.1.8",
+    "postcss": "^8.5.3",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.2"
+  },
+  "build": {
+    "appId": "com.hyot.bidanwin",
+    "productName": "BidanWin",
+    "copyright": "© 2026 HyoT",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "out/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "LICENSE",
+        "to": "LICENSE"
+      }
+    ],
+    "win": {
+      "icon": "build/icons/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "icon": "build/icons"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "BidanWin"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "hyot",
+      "repo": "bidanwin"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  // TypeScript config for Node-side tooling (electron-vite config file)
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["electron.vite.config.ts"]
+}

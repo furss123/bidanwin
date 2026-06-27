@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build outputs (generated locally or by CI)
+dist/
+out/
+build/icons/
+
+# Environment & secrets
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Electron builder cache
+.electron-builder-cache/
+
+# Temporary files
+*.tmp
+*.log
+
+# Test artifacts
+coverage/
+
+# IDE
+.vscode/settings.json
+.idea/
