@@ -7,9 +7,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hyot/bidanwin.git"
+    "url": "https://github.com/furss123/bidanwin.git"
   },
-  "homepage": "https://github.com/hyot/bidanwin",
+  "homepage": "https://github.com/furss123/bidanwin",
   "scripts": {
     "dev": "electron-vite dev",
     "build": "electron-vite build",
@@ -77,7 +77,7 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "hyot",
+      "owner": "furss123",
       "repo": "bidanwin"
     }
   }

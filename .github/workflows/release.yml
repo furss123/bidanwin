@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*.*.*'   # triggers on version tags like v0.1.0
 
+permissions:
+  contents: write
+
 jobs:
   build-windows:
     runs-on: windows-latest
@@ -29,9 +32,7 @@ jobs:
         run: npm run build
 
       - name: Package Windows installer
-        run: npm run package
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx electron-builder --win --publish never
 
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v2
@@ -44,7 +45,7 @@ jobs:
             One-click Windows bloatware remover
             
             ### 설치 방법 / Installation
-            1. 아래 `BidanWin-Setup-*.exe` 다운로드
+            1. 아래 `BidanWin Setup *.exe` 다운로드
             2. 실행 후 설치 (관리자 권한 필요)
             3. 비단윈 실행
             

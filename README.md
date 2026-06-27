@@ -2,7 +2,7 @@
 
 ## ⬇️ Download / 다운로드
 
-**[→ 최신 버전 다운로드 / Download latest release](https://github.com/hyot/bidanwin/releases/latest)**
+**[→ 최신 버전 다운로드 / Download latest release](https://github.com/furss123/bidanwin/releases/latest)**
 
 Windows 10 / 11 지원 · 관리자 권한 필요
 
