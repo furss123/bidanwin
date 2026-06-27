@@ -40,9 +40,9 @@ function StatusBadge({ status }: { status: RemovalStatus }): React.JSX.Element {
   const { t } = useTranslation()
   const styles: Record<RemovalStatus, string> = {
     succeeded:
-      'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300',
-    failed: 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300',
-    blocked: 'bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300'
+      'bg-emerald-100 text-emerald-800',
+    failed: 'bg-red-100 text-red-800',
+    blocked: 'bg-amber-100 text-amber-800'
   }
   const labels: Record<RemovalStatus, string> = {
     succeeded: t.history.succeeded,
@@ -82,7 +82,7 @@ function SessionCard({
   })
 
   return (
-    <section className="rounded-xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900/60">
+    <section className="rounded-xl border border-stone-200 bg-white">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -94,25 +94,25 @@ function SessionCard({
           <ChevronRight className="h-4 w-4 shrink-0 text-stone-500" />
         )}
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium text-stone-900 dark:text-stone-100">{dateLabel}</p>
-          <p className="mt-0.5 text-xs text-stone-500 dark:text-stone-400">
+          <p className="text-sm font-medium text-stone-900">{dateLabel}</p>
+          <p className="mt-0.5 text-xs text-stone-500">
             {t.history.windowsVersion}: {session.windowsVersion} · {t.history.appVersion}:{' '}
             {session.appVersion}
           </p>
         </div>
         <div className="flex shrink-0 flex-wrap gap-1">
           {session.summary.succeeded > 0 && (
-            <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300">
+            <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-800">
               {session.summary.succeeded} {t.history.succeeded}
             </span>
           )}
           {session.summary.failed > 0 && (
-            <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900/50 dark:text-red-300">
+            <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-800">
               {session.summary.failed} {t.history.failed}
             </span>
           )}
           {session.summary.blocked > 0 && (
-            <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/50 dark:text-amber-300">
+            <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
               {session.summary.blocked} {t.history.blocked}
             </span>
           )}
@@ -120,18 +120,18 @@ function SessionCard({
       </button>
 
       {open && (
-        <div className="border-t border-stone-200 px-4 py-3 dark:border-stone-800">
+        <div className="border-t border-stone-200 px-4 py-3">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[32rem] text-left text-sm">
               <thead>
-                <tr className="text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400">
+                <tr className="text-xs uppercase tracking-wide text-stone-500">
                   <th className="pb-2 pr-3 font-medium">{t.history.appColumn}</th>
                   <th className="pb-2 pr-3 font-medium">{t.history.statusColumn}</th>
                   <th className="pb-2 pr-3 font-medium">{t.history.errorColumn}</th>
                   <th className="pb-2 font-medium">{t.history.timeColumn}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-100 dark:divide-stone-800">
+              <tbody className="divide-y divide-stone-100">
                 {visibleApps.map((app: RemovedAppRecord) => {
                   const Icon = getCategoryIcon(app.category)
                   return (
@@ -139,16 +139,16 @@ function SessionCard({
                       <td className="py-2 pr-3">
                         <div className="flex items-center gap-2">
                           <Icon className="h-4 w-4 shrink-0 text-stone-400" />
-                          <span className="text-stone-900 dark:text-stone-100">{app.appName}</span>
+                          <span className="text-stone-900">{app.appName}</span>
                         </div>
                       </td>
                       <td className="py-2 pr-3">
                         <StatusBadge status={app.status} />
                       </td>
-                      <td className="max-w-xs py-2 pr-3 text-xs text-stone-500 dark:text-stone-400">
+                      <td className="max-w-xs py-2 pr-3 text-xs text-stone-500">
                         {app.errorMessage ?? '—'}
                       </td>
-                      <td className="py-2 text-xs text-stone-500 dark:text-stone-400">
+                      <td className="py-2 text-xs text-stone-500">
                         {formatTime(app.timestamp, locale)}
                       </td>
                     </tr>
@@ -259,7 +259,7 @@ function HistoryView({ onLog }: HistoryViewProps): React.JSX.Element {
     <div className="space-y-4">
       <header className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h1 className="text-lg font-semibold text-stone-900 dark:text-stone-100">
+          <h1 className="text-lg font-semibold text-stone-900">
             {t.history.title}
           </h1>
         </div>
@@ -268,7 +268,7 @@ function HistoryView({ onLog }: HistoryViewProps): React.JSX.Element {
             type="button"
             onClick={() => void handleExport()}
             disabled={loading}
-            className="transition-smooth inline-flex items-center gap-1.5 rounded-lg border border-stone-200 px-3 py-1.5 text-sm text-stone-700 hover:bg-stone-50 disabled:opacity-50 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800"
+            className="transition-smooth inline-flex items-center gap-1.5 rounded-lg border border-stone-200 px-3 py-1.5 text-sm text-stone-700 hover:bg-stone-50 disabled:opacity-50"
           >
             <Upload className="h-4 w-4" />
             {t.history.export}
@@ -277,7 +277,7 @@ function HistoryView({ onLog }: HistoryViewProps): React.JSX.Element {
             type="button"
             onClick={() => void handleOpenFileLocation()}
             disabled={loading || !historyPath}
-            className="transition-smooth inline-flex items-center gap-1.5 rounded-lg border border-stone-200 px-3 py-1.5 text-sm text-stone-700 hover:bg-stone-50 disabled:opacity-50 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800"
+            className="transition-smooth inline-flex items-center gap-1.5 rounded-lg border border-stone-200 px-3 py-1.5 text-sm text-stone-700 hover:bg-stone-50 disabled:opacity-50"
           >
             <FolderOpen className="h-4 w-4" />
             {t.history.openFile}
@@ -286,7 +286,7 @@ function HistoryView({ onLog }: HistoryViewProps): React.JSX.Element {
             type="button"
             onClick={() => setConfirmClearOpen(true)}
             disabled={loading || sortedSessions.length === 0}
-            className="transition-smooth inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-1.5 text-sm text-red-700 hover:bg-red-50 disabled:opacity-50 dark:border-red-900/50 dark:text-red-300 dark:hover:bg-red-950/40"
+            className="transition-smooth inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-1.5 text-sm text-red-700 hover:bg-red-50 disabled:opacity-50"
           >
             <Trash2 className="h-4 w-4" />
             {t.history.clearAll}
@@ -303,7 +303,7 @@ function HistoryView({ onLog }: HistoryViewProps): React.JSX.Element {
             className={`transition-smooth rounded-full px-3 py-1 text-xs font-medium ${
               filter === option.id
                 ? 'bg-accent text-white'
-                : 'bg-stone-200 text-stone-600 hover:bg-stone-300 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700'
+                : 'bg-stone-200 text-stone-600 hover:bg-stone-300'
             }`}
           >
             {option.label}
@@ -312,13 +312,13 @@ function HistoryView({ onLog }: HistoryViewProps): React.JSX.Element {
       </div>
 
       {loading ? (
-        <div className="flex items-center justify-center py-16 text-stone-500 dark:text-stone-400">
+        <div className="flex items-center justify-center py-16 text-stone-500">
           <Loader2 className="h-6 w-6 animate-spin text-accent" />
         </div>
       ) : visibleSessions.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-xl border border-stone-200 bg-white py-16 text-center dark:border-stone-800 dark:bg-stone-900/40">
+        <div className="flex flex-col items-center justify-center rounded-xl border border-stone-200 bg-white py-16 text-center">
           <History className="mb-3 h-8 w-8 text-stone-400" />
-          <p className="text-sm text-stone-600 dark:text-stone-400">{t.history.empty}</p>
+          <p className="text-sm text-stone-600">{t.history.empty}</p>
         </div>
       ) : (
         <div className="space-y-3">

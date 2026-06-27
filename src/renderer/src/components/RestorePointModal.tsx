@@ -96,36 +96,36 @@ function RestorePointModal({
       onClick={phase === 'prompt' ? onCancel : undefined}
     >
       <div
-        className="w-full max-w-md rounded-xl border border-stone-200 bg-white p-6 shadow-lg dark:border-stone-700 dark:bg-stone-900"
+        className="w-full max-w-md rounded-xl border border-stone-200 bg-white p-6 shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
         <h2
           id="restore-point-title"
-          className="text-lg font-semibold text-stone-900 dark:text-stone-100"
+          className="text-lg font-semibold text-stone-900"
         >
           {t.restorePointModal.title}
         </h2>
 
         {phase === 'success' ? (
-          <p className="mt-4 flex items-center gap-2 text-sm text-emerald-700 dark:text-emerald-300">
+          <p className="mt-4 flex items-center gap-2 text-sm text-emerald-700">
             <Check className="h-4 w-4" />
             {t.restorePointModal.success}
           </p>
         ) : (
-          <p className="mt-4 text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+          <p className="mt-4 text-sm leading-relaxed text-stone-600">
             {t.restorePointModal.description}
           </p>
         )}
 
         {phase === 'creating' && (
-          <p className="mt-4 flex items-center gap-2 text-sm text-stone-600 dark:text-stone-400">
+          <p className="mt-4 flex items-center gap-2 text-sm text-stone-600">
             <Loader2 className="h-4 w-4 animate-spin" />
             {t.restorePointModal.creating}
           </p>
         )}
 
         {phase === 'failure' && error && (
-          <p className="mt-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-200">
+          <p className="mt-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800">
             {error}
           </p>
         )}
@@ -136,7 +136,7 @@ function RestorePointModal({
               <button
                 type="button"
                 onClick={onCancel}
-                className="transition-smooth rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:border-stone-600 dark:text-stone-300 dark:hover:bg-stone-800"
+                className="transition-smooth rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50"
               >
                 {t.common.cancel}
               </button>
@@ -154,7 +154,7 @@ function RestorePointModal({
                 type="button"
                 onClick={onCancel}
                 disabled={buttonsDisabled}
-                className="transition-smooth rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 disabled:opacity-50 dark:border-stone-600 dark:text-stone-300 dark:hover:bg-stone-800"
+                className="transition-smooth rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 disabled:opacity-50"
               >
                 {t.common.cancel}
               </button>
@@ -162,7 +162,7 @@ function RestorePointModal({
                 type="button"
                 onClick={onSkip}
                 disabled={buttonsDisabled}
-                className="transition-smooth rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 disabled:opacity-50 dark:border-stone-600 dark:text-stone-300 dark:hover:bg-stone-800"
+                className="transition-smooth rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 disabled:opacity-50"
               >
                 {t.common.skip}
               </button>

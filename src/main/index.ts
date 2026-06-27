@@ -325,12 +325,11 @@ app.whenReady().then(() => {
       }
     })
 
-    void getEnvironment().then((env) => {
-      void detectOemApps(env.wingetAvailable).then((result) => {
-        if (mainWindow && !mainWindow.webContents.isDestroyed()) {
-          mainWindow.webContents.send('oem-detection-result', result)
-        }
-      })
+    const env = getEnvironment()
+    void detectOemApps(env.wingetAvailable).then((result) => {
+      if (mainWindow && !mainWindow.webContents.isDestroyed()) {
+        mainWindow.webContents.send('oem-detection-result', result)
+      }
     })
   })
 

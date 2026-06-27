@@ -26,16 +26,16 @@ function CollapsibleSection({
   const [open, setOpen] = useState(defaultOpen ?? false)
 
   return (
-    <section className="rounded-xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900/60">
+    <section className="rounded-xl border border-stone-200 bg-white">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="transition-smooth flex w-full items-center gap-2 px-4 py-3 text-left text-sm font-medium text-stone-900 dark:text-stone-100"
+        className="transition-smooth flex w-full items-center gap-2 px-4 py-3 text-left text-sm font-medium text-stone-900"
       >
         {open ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
         {title}
       </button>
-      {open && <div className="border-t border-stone-200 px-4 py-4 dark:border-stone-800">{children}</div>}
+      {open && <div className="border-t border-stone-200 px-4 py-4">{children}</div>}
     </section>
   )
 }
@@ -51,14 +51,14 @@ function RemovedAppRow({ app }: { app: BloatApp }): React.JSX.Element {
   const showStoreButton = isStoreLink(hint)
 
   return (
-    <li className="rounded-lg border border-stone-200 p-3 dark:border-stone-700">
-      <p className="font-medium text-stone-900 dark:text-stone-100">{app.name}</p>
-      <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">{hint}</p>
+    <li className="rounded-lg border border-stone-200 p-3">
+      <p className="font-medium text-stone-900">{app.name}</p>
+      <p className="mt-1 text-sm text-stone-500">{hint}</p>
       {showStoreButton && (
         <button
           type="button"
           onClick={() => void window.api.openMicrosoftStore()}
-          className="transition-smooth mt-2 inline-flex items-center gap-1 rounded-lg border border-stone-200 px-2.5 py-1 text-xs text-stone-600 hover:bg-stone-50 dark:border-stone-600 dark:text-stone-300 dark:hover:bg-stone-800"
+          className="transition-smooth mt-2 inline-flex items-center gap-1 rounded-lg border border-stone-200 px-2.5 py-1 text-xs text-stone-600 hover:bg-stone-50"
         >
           <ExternalLink className="h-3 w-3" />
           {t.restoreGuide.openStoreShort}
@@ -66,7 +66,7 @@ function RemovedAppRow({ app }: { app: BloatApp }): React.JSX.Element {
       )}
       {app.removalMethod === 'appx' && (
         <div className="mt-3">
-          <p className="mb-1 text-xs text-stone-500 dark:text-stone-400">
+          <p className="mb-1 text-xs text-stone-500">
             {t.restoreGuide.perAppReinstall}
           </p>
           <CodeBlock
@@ -134,14 +134,14 @@ function RestoreGuide({ removedIds }: RestoreGuideProps): React.JSX.Element {
   return (
     <div className="space-y-4">
       <header>
-        <h1 className="text-lg font-semibold text-stone-900 dark:text-stone-100">
+        <h1 className="text-lg font-semibold text-stone-900">
           {t.restoreGuide.title}
         </h1>
-        <p className="text-sm text-stone-500 dark:text-stone-400">{t.restoreGuide.subtitle}</p>
+        <p className="text-sm text-stone-500">{t.restoreGuide.subtitle}</p>
       </header>
 
       <CollapsibleSection title={t.restoreGuide.section1Title} defaultOpen>
-        <ol className="list-decimal space-y-2 pl-5 text-sm text-stone-700 dark:text-stone-300">
+        <ol className="list-decimal space-y-2 pl-5 text-sm text-stone-700">
           {t.restoreGuide.section1Steps.map((step) => (
             <li key={step}>{step}</li>
           ))}
@@ -164,7 +164,7 @@ function RestoreGuide({ removedIds }: RestoreGuideProps): React.JSX.Element {
             className={`transition-smooth rounded-full px-3 py-1 text-xs font-medium ${
               section2Source === 'session'
                 ? 'bg-accent text-white'
-                : 'bg-stone-200 text-stone-600 hover:bg-stone-300 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700'
+                : 'bg-stone-200 text-stone-600 hover:bg-stone-300'
             }`}
           >
             {t.restoreGuide.sessionTab}
@@ -175,7 +175,7 @@ function RestoreGuide({ removedIds }: RestoreGuideProps): React.JSX.Element {
             className={`transition-smooth rounded-full px-3 py-1 text-xs font-medium ${
               section2Source === 'all'
                 ? 'bg-accent text-white'
-                : 'bg-stone-200 text-stone-600 hover:bg-stone-300 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700'
+                : 'bg-stone-200 text-stone-600 hover:bg-stone-300'
             }`}
           >
             {t.restoreGuide.allSessionsTab}
@@ -183,7 +183,7 @@ function RestoreGuide({ removedIds }: RestoreGuideProps): React.JSX.Element {
         </div>
 
         {section2Apps.length === 0 ? (
-          <p className="text-sm text-stone-500 dark:text-stone-400">{section2EmptyMessage}</p>
+          <p className="text-sm text-stone-500">{section2EmptyMessage}</p>
         ) : (
           <ul className="space-y-3">
             {section2Apps.map((app) => (
@@ -192,17 +192,17 @@ function RestoreGuide({ removedIds }: RestoreGuideProps): React.JSX.Element {
           </ul>
         )}
         <div className="mt-4">
-          <p className="mb-2 text-sm text-stone-600 dark:text-stone-400">{t.restoreGuide.reinstallAll}</p>
+          <p className="mb-2 text-sm text-stone-600">{t.restoreGuide.reinstallAll}</p>
           <CodeBlock code={DEFAULT_APPX_REINSTALL} />
         </div>
       </CollapsibleSection>
 
       <CollapsibleSection title={t.restoreGuide.section3Title}>
-        <p className="text-sm text-stone-700 dark:text-stone-300">{t.restoreGuide.section3Body}</p>
+        <p className="text-sm text-stone-700">{t.restoreGuide.section3Body}</p>
         <button
           type="button"
           onClick={() => void window.api.openMicrosoftStore()}
-          className="transition-smooth mt-4 inline-flex items-center gap-2 rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:border-stone-600 dark:text-stone-300 dark:hover:bg-stone-800"
+          className="transition-smooth mt-4 inline-flex items-center gap-2 rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50"
         >
           <ExternalLink className="h-4 w-4" />
           {t.restoreGuide.openStore}

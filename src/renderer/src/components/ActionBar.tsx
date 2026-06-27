@@ -24,8 +24,8 @@ function ActionBar({
   const removeBlocked = selectedCount === 0 || removeDisabled || isRemoving
 
   return (
-    <footer className="flex shrink-0 items-center gap-3 border-t border-stone-200 bg-white/90 px-5 py-3 backdrop-blur dark:border-stone-800 dark:bg-stone-900/90">
-      <span className="min-w-[6rem] text-sm text-stone-600 dark:text-stone-400">
+    <footer className="flex shrink-0 items-center gap-3 border-t border-stone-200 bg-white/90 px-5 py-3 backdrop-blur">
+      <span className="min-w-[6rem] text-sm text-stone-600">
         {interpolate(t.actionBar.selected, { n: selectedCount })}
       </span>
 
@@ -34,7 +34,7 @@ function ActionBar({
           type="button"
           onClick={onSelectRecommended}
           disabled={isRemoving}
-          className="transition-smooth rounded-lg border border-stone-200 px-3 py-2 text-sm text-stone-700 hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800"
+          className="transition-smooth rounded-lg border border-stone-200 px-3 py-2 text-sm text-stone-700 hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {t.actionBar.selectRecommended}
         </button>
@@ -42,7 +42,7 @@ function ActionBar({
           type="button"
           onClick={onClear}
           disabled={selectedCount === 0 || isRemoving}
-          className="transition-smooth rounded-lg border border-stone-200 px-3 py-2 text-sm text-stone-700 hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800"
+          className="transition-smooth rounded-lg border border-stone-200 px-3 py-2 text-sm text-stone-700 hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {t.actionBar.clear}
         </button>

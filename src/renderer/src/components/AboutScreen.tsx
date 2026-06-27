@@ -69,7 +69,7 @@ function AboutScreen({ env, oemDetectionResult, onCatalogUpdate }: AboutScreenPr
 
   return (
     <div className="flex justify-center py-8">
-      <div className="w-full max-w-md rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-card dark:border-stone-800 dark:bg-stone-900/60 dark:shadow-card-dark">
+      <div className="w-full max-w-md rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-card">
         <img
           src="/icon.png"
           alt="BidanWin"
@@ -78,19 +78,19 @@ function AboutScreen({ env, oemDetectionResult, onCatalogUpdate }: AboutScreenPr
           height={96}
         />
 
-        <h1 className="mt-6 text-3xl font-bold text-stone-900 dark:text-stone-100">
+        <h1 className="mt-6 text-3xl font-bold text-stone-900">
           {t.aboutScreen.title}
         </h1>
-        <p className="mt-1 text-lg text-stone-500 dark:text-stone-400">{t.aboutScreen.subtitle}</p>
-        <p className="mt-1 text-sm text-stone-400 dark:text-stone-500">
+        <p className="mt-1 text-lg text-stone-500">{t.aboutScreen.subtitle}</p>
+        <p className="mt-1 text-sm text-stone-400">
           {t.aboutScreen.version} {version}
         </p>
 
-        <p className="mt-4 text-sm leading-relaxed text-stone-600 dark:text-stone-300">
+        <p className="mt-4 text-sm leading-relaxed text-stone-600">
           {locale === 'ko' ? t.aboutScreen.description : t.aboutScreen.descriptionEn}
         </p>
 
-        <p className="mt-4 text-xs text-stone-500 dark:text-stone-400">{t.aboutScreen.copyright}</p>
+        <p className="mt-4 text-xs text-stone-500">{t.aboutScreen.copyright}</p>
 
         <div className="mt-6 flex flex-col gap-2">
           <button
@@ -109,7 +109,7 @@ function AboutScreen({ env, oemDetectionResult, onCatalogUpdate }: AboutScreenPr
           </button>
         </div>
 
-        <div className="mt-6 rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-left text-xs text-stone-600 dark:border-stone-700 dark:bg-stone-800/50 dark:text-stone-400">
+        <div className="mt-6 rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-left text-xs text-stone-600">
           <p>
             <span className="text-stone-500">{t.catalogUpdate.catalogVersion}:</span> v
             {CATALOG_VERSION}
@@ -149,14 +149,14 @@ function AboutScreen({ env, oemDetectionResult, onCatalogUpdate }: AboutScreenPr
           type="button"
           onClick={() => void handleCheckUpdate()}
           disabled={checking}
-          className="transition-smooth mt-4 inline-flex items-center justify-center gap-2 rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 disabled:opacity-50 dark:border-stone-600 dark:text-stone-300 dark:hover:bg-stone-800"
+          className="transition-smooth mt-4 inline-flex items-center justify-center gap-2 rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 disabled:opacity-50"
         >
           {checking && <Loader2 className="h-4 w-4 animate-spin" />}
           {checking ? t.catalogUpdate.checking : t.catalogUpdate.checkBtn}
         </button>
 
         {statusMessage && (
-          <p className="mt-3 text-xs text-stone-500 dark:text-stone-400">{statusMessage}</p>
+          <p className="mt-3 text-xs text-stone-500">{statusMessage}</p>
         )}
       </div>
     </div>

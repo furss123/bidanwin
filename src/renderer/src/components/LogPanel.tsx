@@ -13,11 +13,11 @@ interface LogPanelProps {
 }
 
 const LOG_STYLES: Record<LogLine['type'], string> = {
-  info: 'text-stone-600 dark:text-stone-400',
-  success: 'text-emerald-600 dark:text-emerald-400',
-  error: 'text-red-600 dark:text-red-400',
-  blocked: 'text-amber-600 dark:text-amber-400',
-  warn: 'text-amber-600 dark:text-amber-400'
+  info: 'text-stone-600',
+  success: 'text-emerald-600',
+  error: 'text-red-600',
+  blocked: 'text-amber-600',
+  warn: 'text-amber-600'
 }
 
 const LOG_PREFIX: Record<LogLine['type'], string> = {
@@ -52,7 +52,7 @@ function LogPanel({
         type="button"
         onClick={onToggle}
         aria-label={t.logPanel.openLogPanel}
-        className="transition-smooth flex w-10 shrink-0 flex-col items-center justify-center gap-1 border-l border-stone-200 bg-stone-50 text-stone-500 hover:bg-stone-100 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-400 dark:hover:bg-stone-800"
+        className="transition-smooth flex w-10 shrink-0 flex-col items-center justify-center gap-1 border-l border-stone-200 bg-stone-50 text-stone-500 hover:bg-stone-100"
       >
         <PanelRightOpen className="h-4 w-4" />
         <span className="text-[10px] font-medium [writing-mode:vertical-rl]">{t.logPanel.title}</span>
@@ -61,11 +61,11 @@ function LogPanel({
   }
 
   return (
-    <aside className="flex w-72 shrink-0 flex-col border-l border-stone-200 bg-stone-50 dark:border-stone-800 dark:bg-stone-900/80">
-      <div className="border-b border-stone-200 px-3 py-2 dark:border-stone-800">
+    <aside className="flex w-72 shrink-0 flex-col border-l border-stone-200 bg-stone-50">
+      <div className="border-b border-stone-200 px-3 py-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-medium uppercase tracking-wide text-stone-500 dark:text-stone-400">
+            <span className="text-xs font-medium uppercase tracking-wide text-stone-500">
               {t.logPanel.title}
             </span>
             {isRemoving ? (
@@ -74,14 +74,14 @@ function LogPanel({
                 <span className="animate-pulse">{t.logPanel.removing}</span>
               </span>
             ) : (
-              <span className="text-[10px] text-stone-400 dark:text-stone-500">{t.logPanel.ready}</span>
+              <span className="text-[10px] text-stone-400">{t.logPanel.ready}</span>
             )}
           </div>
           <div className="flex items-center gap-1">
             <button
               type="button"
               onClick={onClear}
-              className="transition-smooth rounded px-1.5 py-0.5 text-[10px] text-stone-500 hover:bg-stone-200 dark:text-stone-400 dark:hover:bg-stone-800"
+              className="transition-smooth rounded px-1.5 py-0.5 text-[10px] text-stone-500 hover:bg-stone-200"
             >
               {t.logPanel.clearLog}
             </button>
@@ -89,7 +89,7 @@ function LogPanel({
               type="button"
               onClick={onToggle}
               aria-label={t.logPanel.closeLogPanel}
-              className="transition-smooth rounded p-1 text-stone-500 hover:bg-stone-200 dark:text-stone-400 dark:hover:bg-stone-800"
+              className="transition-smooth rounded p-1 text-stone-500 hover:bg-stone-200"
             >
               <PanelRightClose className="h-4 w-4" />
             </button>
@@ -97,7 +97,7 @@ function LogPanel({
         </div>
         {wingetAvailable !== undefined && (
           <p
-            className="mt-1 text-[10px] text-stone-400 dark:text-stone-500"
+            className="mt-1 text-[10px] text-stone-400"
             title="Winget is used as a fallback uninstaller for some apps"
           >
             {wingetAvailable ? t.logPanel.wingetAvailable : t.logPanel.wingetMissing}

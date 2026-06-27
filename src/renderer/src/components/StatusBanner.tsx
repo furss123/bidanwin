@@ -17,7 +17,7 @@ function StatusBanner({
 
   if (!env) {
     return (
-      <div className="mb-4 rounded-lg border border-stone-200 bg-stone-50 px-4 py-2.5 text-sm text-stone-500 dark:border-stone-800 dark:bg-stone-900/50 dark:text-stone-400">
+      <div className="mb-4 rounded-lg border border-stone-200 bg-stone-50 px-4 py-2.5 text-sm text-stone-500">
         {t.statusBanner.checkingEnv}
       </div>
     )
@@ -25,7 +25,7 @@ function StatusBanner({
 
   if (!env.isWindows) {
     return (
-      <div className="mb-4 flex items-start gap-3 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900 dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-200">
+      <div className="mb-4 flex items-start gap-3 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900">
         <Info className="mt-0.5 h-4 w-4 shrink-0" />
         <p>{t.statusBanner.previewMode}</p>
       </div>
@@ -34,7 +34,7 @@ function StatusBanner({
 
   if (!env.powershellAvailable) {
     return (
-      <div className="mb-4 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-900 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-200">
+      <div className="mb-4 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-900">
         <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
         <p>{t.statusBanner.powershellMissing}</p>
       </div>
@@ -43,7 +43,7 @@ function StatusBanner({
 
   if (!env.isAdmin) {
     return (
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-amber-950/40 dark:text-amber-200">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
         <div className="flex items-start gap-3">
           <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0" />
           <p>{t.statusBanner.adminRequired}</p>
@@ -61,10 +61,10 @@ function StatusBanner({
   }
 
   return (
-    <div className="mb-4 flex items-center gap-2 rounded-lg border border-emerald-200/80 bg-emerald-50/80 px-4 py-2 text-sm text-emerald-800 dark:border-emerald-900/40 dark:bg-emerald-950/30 dark:text-emerald-300">
+    <div className="mb-4 flex items-center gap-2 rounded-lg border border-emerald-200/80 bg-emerald-50/80 px-4 py-2 text-sm text-emerald-800">
       <ShieldCheck className="h-4 w-4 shrink-0" />
       <span>{t.statusBanner.adminOk}</span>
-      <span className="text-emerald-600/70 dark:text-emerald-400/70">· {env.windowsVersion}</span>
+      <span className="text-emerald-600/70">· {env.windowsVersion}</span>
     </div>
   )
 }

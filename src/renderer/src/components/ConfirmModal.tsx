@@ -64,18 +64,18 @@ function ConfirmModal({
       onClick={onCancel}
     >
       <div
-        className="w-full max-w-md rounded-xl border border-stone-200 bg-white p-6 shadow-lg dark:border-stone-700 dark:bg-stone-900"
+        className="w-full max-w-md rounded-xl border border-stone-200 bg-white p-6 shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
         <h2
           id="confirm-removal-title"
-          className="text-lg font-semibold text-stone-900 dark:text-stone-100"
+          className="text-lg font-semibold text-stone-900"
         >
           {modalTitle}
         </h2>
 
         {!hideAppList && appNames.length > 0 && (
-          <ul className="mt-4 max-h-48 space-y-1 overflow-y-auto text-sm text-stone-700 dark:text-stone-300">
+          <ul className="mt-4 max-h-48 space-y-1 overflow-y-auto text-sm text-stone-700">
             {visible.map((name, index) => (
               <li key={`${name}-${index}`} className="flex items-center gap-2">
                 <span className="text-stone-400">·</span>
@@ -83,7 +83,7 @@ function ConfirmModal({
               </li>
             ))}
             {overflow > 0 && (
-              <li className="text-stone-500 dark:text-stone-400">
+              <li className="text-stone-500">
                 {interpolate(t.confirmModal.andMore, { n: overflow })}
               </li>
             )}
@@ -91,7 +91,7 @@ function ConfirmModal({
         )}
 
         <p
-          className={`text-sm text-amber-800 dark:text-amber-300 ${hideAppList || appNames.length === 0 ? 'mt-4' : 'mt-4'}`}
+          className={`text-sm text-amber-800 ${hideAppList || appNames.length === 0 ? 'mt-4' : 'mt-4'}`}
         >
           {modalWarning}
         </p>
@@ -100,7 +100,7 @@ function ConfirmModal({
           <button
             type="button"
             onClick={onCancel}
-            className="transition-smooth rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 dark:border-stone-600 dark:text-stone-300 dark:hover:bg-stone-800"
+            className="transition-smooth rounded-lg border border-stone-200 px-4 py-2 text-sm text-stone-700 hover:bg-stone-50"
           >
             {t.common.cancel}
           </button>

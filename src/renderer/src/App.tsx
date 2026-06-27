@@ -77,7 +77,6 @@ function App(): React.JSX.Element {
   const [activeView, setActiveView] = useState<SidebarView>('all')
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
   const [removedIds, setRemovedIds] = useState<Set<string>>(new Set())
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [logLines, setLogLines] = useState<LogLine[]>(() => [
     createLogLine('info', t.logPanel.ready),
     createLogLine('info', t.logPanel.catalogLoaded)
@@ -382,16 +381,12 @@ function App(): React.JSX.Element {
   }
 
   return (
-    <div
-      className={`${theme === 'dark' ? 'dark' : ''} flex h-screen bg-surface-light text-stone-900 dark:bg-surface-dark dark:text-stone-100`}
-    >
+    <div className="flex h-screen bg-surface-light text-stone-900">
       <Sidebar
         activeView={activeView}
         categoryCounts={categoryCounts}
         oemDetectionResult={oemDetectionResult}
-        theme={theme}
         onViewChange={handleViewChange}
-        onThemeToggle={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
       />
 
       <div className="flex min-w-0 flex-1 flex-col">
@@ -429,33 +424,33 @@ function App(): React.JSX.Element {
             ) : (
               <>
                 <header className="mb-5">
-                  <h1 className="text-lg font-semibold text-stone-900 dark:text-stone-100">
+                  <h1 className="text-lg font-semibold text-stone-900">
                     {activeLabel}
                   </h1>
-                  <p className="text-sm text-stone-500 dark:text-stone-400">
+                  <p className="text-sm text-stone-500">
                     {oemCategorySubtitle ??
                       (removalAllowed ? t.app.subtitleAllowed : t.app.subtitleGated)}
                   </p>
                 </header>
 
                 {activeCategory === 'oem' && oemDetectionResult === null ? (
-                  <div className="flex flex-col items-center justify-center rounded-xl border border-stone-200 bg-white py-16 text-center dark:border-stone-800 dark:bg-stone-900/40">
+                  <div className="flex flex-col items-center justify-center rounded-xl border border-stone-200 bg-white py-16 text-center">
                     <Loader2 className="mb-3 h-8 w-8 animate-spin text-accent" />
-                    <p className="text-sm text-stone-600 dark:text-stone-400">{t.oem.detecting}</p>
+                    <p className="text-sm text-stone-600">{t.oem.detecting}</p>
                   </div>
                 ) : activeCategory === 'oem' &&
                   (oemDetectionResult?.manufacturer === 'unknown' || visibleApps.length === 0) ? (
-                  <div className="flex flex-col items-center justify-center rounded-xl border border-stone-200 bg-white py-16 text-center dark:border-stone-800 dark:bg-stone-900/40">
-                    <p className="text-sm text-stone-600 dark:text-stone-400">
+                  <div className="flex flex-col items-center justify-center rounded-xl border border-stone-200 bg-white py-16 text-center">
+                    <p className="text-sm text-stone-600">
                       {oemDetectionResult?.manufacturer === 'unknown'
                         ? t.oem.unknownManufacturer
                         : t.oem.noAppsFound}
                     </p>
                   </div>
                 ) : remainingApps.length === 0 && visibleApps.length > 0 ? (
-                  <div className="flex flex-col items-center justify-center rounded-xl border border-stone-200 bg-white py-16 text-center dark:border-stone-800 dark:bg-stone-900/40">
+                  <div className="flex flex-col items-center justify-center rounded-xl border border-stone-200 bg-white py-16 text-center">
                     <Check className="mb-3 h-8 w-8 text-accent" strokeWidth={2.5} />
-                    <p className="text-sm text-stone-700 dark:text-stone-300">
+                    <p className="text-sm text-stone-700">
                       {t.emptyState.message}
                     </p>
                   </div>

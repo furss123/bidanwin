@@ -20,7 +20,7 @@ function CodeBlock({ code }: CodeBlockProps): React.JSX.Element {
   }
 
   return (
-    <div className="relative rounded-lg bg-stone-900 dark:bg-stone-950">
+    <div className="relative rounded-lg bg-stone-900">
       <button
         type="button"
         onClick={handleCopy}

@@ -27,10 +27,6 @@ export const en: TranslationSchema = {
     },
     restoreGuide: 'Restore Guide',
     about: 'About',
-    themeToggle: {
-      light: 'Light mode',
-      dark: 'Dark mode'
-    },
     language: {
       ko: '한국어',
       en: 'English'

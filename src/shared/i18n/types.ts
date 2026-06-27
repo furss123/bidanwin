@@ -27,10 +27,6 @@ export interface TranslationSchema {
     }
     restoreGuide: string
     about: string
-    themeToggle: {
-      light: string
-      dark: string
-    }
     language: {
       ko: string
       en: string

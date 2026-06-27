@@ -10,7 +10,7 @@ function LanguageToggle(): React.JSX.Element {
 
   return (
     <div
-      className="flex rounded-lg border border-stone-200 p-0.5 text-xs dark:border-stone-700"
+      className="flex rounded-lg border border-stone-200 p-0.5 text-xs"
       role="group"
       aria-label="Language"
     >
@@ -20,7 +20,7 @@ function LanguageToggle(): React.JSX.Element {
         className={`transition-smooth flex-1 rounded-md px-2 py-1.5 ${
           locale === 'ko'
             ? 'bg-accent font-medium text-white'
-            : 'text-stone-600 hover:bg-stone-200/70 dark:text-stone-400 dark:hover:bg-stone-800'
+            : 'text-stone-600 hover:bg-stone-200/70'
         }`}
       >
         {t.sidebar.language.ko}
@@ -31,7 +31,7 @@ function LanguageToggle(): React.JSX.Element {
         className={`transition-smooth flex-1 rounded-md px-2 py-1.5 ${
           locale === 'en'
             ? 'bg-accent font-medium text-white'
-            : 'text-stone-600 hover:bg-stone-200/70 dark:text-stone-400 dark:hover:bg-stone-800'
+            : 'text-stone-600 hover:bg-stone-200/70'
         }`}
       >
         {t.sidebar.language.en}
